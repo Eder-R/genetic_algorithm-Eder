@@ -17,11 +17,11 @@ def main():
     new_population = np.random.uniform(low=-4.0, high=4.0, size=pop_size)
 
     # Algoritmo genético
-    num_generations = 100
+    num_generations = 5
     num_parents_mating = 4
 
     for generation in range(num_generations):
-        print(f"Geração: {generation}")
+        print(f"Geracao: {generation}")
 
         # medir o ‘fitness’ de cada cromossomo na população
         fitness = ga.cal_pop_fitness(equation_inputs, new_population)
@@ -44,7 +44,7 @@ def main():
 
         # adicionar variações aos filhos usando mutação
         offspring_mutation = ga.mutation(offspring_crossover)
-        print("Resultado da mutação:")
+        print("Resultado da mutacao:")
         print(offspring_mutation)
 
         # criar a nova população baseada nos pais e filhos
@@ -52,13 +52,13 @@ def main():
         new_population[parents.shape[0]:, :] = offspring_mutation
 
         best_result = np.max(np.sum(new_population*equation_inputs, axis=1))
-        print(f"Melhor resultado depois da geração {generation}: {best_result}")
+        print(f"Melhor resultado depois da geracao {generation}: {best_result}")
 
     fitness = ga.cal_pop_fitness(equation_inputs, new_population)
     best_match_idx = np.where(fitness == np.max(fitness))
 
-    print("Melhor solução: ", new_population[best_match_idx, :])
-    print("Fitness da melhor solução: ", fitness[best_match_idx])
+    print("Melhor solucao: ", new_population[best_match_idx, :])
+    print("Fitness da melhor solucao: ", fitness[best_match_idx])
 
 
 if __name__ == '__main__':

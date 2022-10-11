@@ -52,7 +52,7 @@ def mutation(offspring_crossover, mutation_rate=0.3):
         if np.random.random() < mutation_rate:
             # O valor aleatório a ser adicionado
             random_idx = np.random.randint(0, offspring_crossover.shape[1])
-            random_value = np.random.uniform(-1.0, 1.0, 1)
+            random_value = abs(idx -1)
             offspring_crossover[idx, random_idx] = offspring_crossover[idx, random_idx] + random_value
 
     return offspring_crossover
